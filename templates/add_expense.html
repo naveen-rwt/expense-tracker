@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-md-6">
+    <h3 class="mb-3">Add Expense</h3>
+    <form method="post">
+      <div class="mb-3">
+        <label>Amount (₹)</label>
+        <input type="number" step="0.01" min="0" class="form-control" name="amount" required>
+      </div>
+      <div class="mb-3">
+        <label>Category</label>
+        <select class="form-select" name="category" required>
+          <option>Food</option>
+          <option>Travel</option>
+          <option>Rent</option>
+          <option>Shopping</option>
+          <option>Bills</option>
+          <option>Health</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="mb-3">
+        <label>Description (optional)</label>
+        <input type="text" class="form-control" name="description">
+      </div>
+      <div class="mb-3">
+        <label>Date</label>
+        <input type="date" class="form-control" name="spent_on">
+      </div>
+      <button class="btn btn-primary">Save</button>
+    </form>
+  </div>
+</div>
+{% endblock %}

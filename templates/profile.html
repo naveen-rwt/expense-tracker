@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="row">
+  <div class="col-md-6">
+    <h3>Profile</h3>
+    <ul class="list-group mb-3">
+      <li class="list-group-item">Email: {{ current_user.email }}</li>
+      <li class="list-group-item">Total Spent: ₹{{ '%.2f'|format(total_spent) }}</li>
+      <li class="list-group-item">Top Category: {{ top_cat or '-' }}</li>
+      <li class="list-group-item">Transactions: {{ count }}</li>
+    </ul>
+  </div>
+  <div class="col-md-6">
+    <h5>Recent Expenses</h5>
+    <table class="table table-sm">
+      <thead><tr><th>Date</th><th>Category</th><th class="text-end">Amount</th></tr></thead>
+      <tbody>
+        {% for e in recent %}
+        <tr>
+          <td>{{ e.spent_on }}</td>
+          <td>{{ e.category }}</td>
+          <td class="text-end">₹{{ '%.2f'|format(e.amount) }}</td>
+        </tr>
+        {% else %}
+        <tr><td colspan="3">No recent expenses</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}
